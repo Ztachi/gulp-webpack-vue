@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src='./common/zepto/zepto.min.js'></script>
+    <script>
+        $.ajax({
+            url: './svg/svg.svg',
+            dataType: 'text',
+            success: function (d) {
+                $('#svg').html(d);
+            }
+        })
+    </script>
+</head>
+
+<body>
+    <div id="fixed-guard" style="position:fixed;width:100%;height:100%;background:#fff;z-index:10000;"></div>
+    <script src="./common/flexui.js"></script>
+    <div id="svg"></div>
+    <div id="app">
+        {{msg}} <b>{{clip}}</b>
+        <input type="text" v-model='id'>
+        <div>弹幕ID:{{id}}</div>
+        <ul id="list">
+            <li v-if='!list.length' style="text-align:center;">空</li>
+            <li v-for='d in list'>
+                <span>{{d.ext.title}}</span><span>{{d.ext.description}}</span>
+            </li>
+        </ul>
+        <router-link to='/page2?msg=page2'>page2</router-link>
+        <router-link :to="{name:'page3',query:{msg:'page3'}}">page3</router-link>
+        <router-view></router-view>
+    </div>
+    <script src='./common/vue/vue.js'></script>
+    <script src='./common/vue-router/vue-router.js'></script>
+    <script src='./js/index.js'></script>
+</body>
+
+</html>

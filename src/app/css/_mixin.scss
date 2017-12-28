@@ -1,0 +1,77 @@
+//同时设置相同宽高并设置成圆形
+@mixin equalWH($num, $circle:true, $center:false) {
+    width: $num + px;
+    height: $num + px;
+    @if($circle) {
+        border-radius: 50%;
+    }
+    @if($center) {
+        line-height: $num + px;
+        text-align: center;
+    }
+}
+
+//设置兼容透明度
+@mixin opacity($num) {
+    opacity: $num;
+    filter: alpha(opacity=$num * 100);
+}
+
+//同时设置高度和行高
+@mixin height($h) {
+    height: $h + px;
+    line-height: $h + px;
+}
+
+//同时设置宽度和居中
+@mixin widthCenter($w) {
+    width: $w + px;
+    text-align: center;
+}
+
+//设置未知宽高元素居中
+@mixin middle($x, $y) {
+    position: absolute;
+    @if($x and $y) {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    @else {
+        @if($x) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        @if($y) {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
+
+//设置已知宽高元素居中
+@mixin middleWH($width, $height) {
+    position: absolute;
+    @if($width) {
+        left: 50%;
+        margin-left: - $width / 2 + px;
+    }
+    @if($height) {
+        top: 50%;
+        margin-top: - $height / 2 + px;
+    }
+}
+
+//透明蒙层背景色
+@mixin bgBlack($opacity) {
+    background-color: rgba(0, 0, 0, $opacity);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000, endColorstr=#7F000000);
+}
+
+//单行超出宽度截取
+@mixin ellipsis {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

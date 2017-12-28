@@ -1,0 +1,39 @@
+@import 'mixin.scss';
+#text{
+    color: red;
+    font-size: 20px;
+
+}
+#svg{
+    display: none;
+}
+@keyframes rotate {
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+
+#rotate{
+    @include equalWH(20,false);
+    background-color: forestgreen;
+    animation: rotate 1s linear infinite;
+}
+a{
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: firebrick;
+    color: #fff;
+}
+
+#list{
+    max-height: 200px;
+    font-size: 12px;
+    overflow: auto;
+    margin-bottom: 20px;
+    >li{
+        margin-top: 20px;
+        >span{
+            margin: 0 5px;
+        }
+    }
+}
